@@ -1,0 +1,7 @@
+set -e
+
+NPATH=`pwd`
+cd $NPATH
+#rm -f cscope.*
+~/.bin/cscope_ctags_env_linux.sh
+cscope -Rbqk -i cscope.files

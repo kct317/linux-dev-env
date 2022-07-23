@@ -1,0 +1,22 @@
+[user]
+	email = lzhkai1111@qq.com
+    name = kevin leung
+[color]
+    ui = true
+[diff]
+    tool = vimdiff
+[alias]
+    dv = difftool
+    co = checkout
+    st = status
+    ci = commit
+    br = branch
+    df = diff
+    cp = cherry-pick
+[difftool]
+    prompt = false
+[core]
+    commentChar = |
+[credential]
+    helper = store
+

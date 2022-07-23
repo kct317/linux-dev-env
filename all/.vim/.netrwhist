@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/lzk0642/q6_457/logic/log/userd-lzk1-457'
+let g:netrw_dirhist_2='/home/lzk0642/q6_457/logic/module'
+let g:netrw_dirhist_3='/home/lzk0642/q6_457/logic/rc/rpc_decl'
+let g:netrw_dirhist_4='/home/kct/blog/app/templates/auth'
+let g:netrw_dirhist_5='/home/lzk0642/q6_457/logic/log/fightd-lzk1'

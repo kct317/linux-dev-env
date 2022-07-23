@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+if [ $# != 3 ] ; then
+    echo "key path ex_path"
+    exit 1
+fi
+
+grep -r --color=auto $1 $2 --exclude-dir=$3
