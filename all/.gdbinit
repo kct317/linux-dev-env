@@ -29,4 +29,4 @@ end
 set print vtbl on
 end
 
-source ~/bin/peda/peda.py
+source ~/.bin/peda/peda.py
