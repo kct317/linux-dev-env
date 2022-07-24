@@ -197,10 +197,15 @@ endif
 "   A(append at the last char of last word in line)
 "   o(insert in next line)
 "   O(insert in preview line)
+"   s(delete current char and insert at current char)
+"   S(empty current line and insert at the first byte in line)
 "   r(replace current char and only one)
 "   R(replace char from current char)
 " leave vim temp: 
-"   :! command in shell
+"   :!command        // run command in shell
+"   :terminal        // open terminal by split windows, ctrl+d back to vim
+"   :!sh             // leave vim to run shell
+"   :4,6!sort        // sort line 4, 5, 6 in file
 " comprex key: 
 "   ctrl+{one character} e.g <C-f>  next page
 "   shift+{one character} e.g <S-f>  highlight all the same words 
@@ -222,11 +227,30 @@ endif
 "   6{space key}     // move 6 char to right
 "   ctrl+u or ctrl+f // next page
 "   ctrl+d or ctrl+b // last page 
+"   %    // switch cursor within pair symbols () [] {}
+" choose zone:
+"   vi"  // choose adf within double quotes \"adf\"
+"   vi(  // choose adf within brackets (adf)
+"   vi<  // choose adf within angle brackets <adf>
+"   va"  // choose \"adf\" with double quotes \"adf\"
+"   va(  // choose (adf) with brackets (adf)
+"   va<  // choose <adf> with angle brackets <adf>
+"   vi{  // choose zone between {}
+"   va{  // choose zone between {} and {}
+"   \s*$ // zone from blank to line end. /**  \s is blank, $ is line end  **/
+"   \s.$ // zone from blank(at least one blank) to line end.
+"   \s*s // zone from blank to char 's'
+"   ^\s* // zone from line begin to continue blank
 " modify: 
 "   cw == dw + i // modify one word
+"   ce == dw + i // modify one word
 " delete: 
 "   v + d or x // delete zone u choose
 "   V + d or x // delete all line u choose
+"   caW        // delete between the nearest blank and one blank
+"   ciW        // delete between the nearest blank
+" copy and paste:
+"   yyp    // copy one line and paste on next line
 " creating macro:
 "   q in normal mode and then insert macro name(one char), then input command{}, last
 "   input key <Ese> and q to end the macro defination
@@ -235,10 +259,21 @@ endif
 syntax on
 set nocp
 " comment add and delete
-nnoremap <silent> ,c :'<,'>norm I//<cr>
-nnoremap <silent> ,c :'<,'>norm I//<cr>
+au BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp,*.cc
+\ map = ^i// |
+\ map - ^xx
+" python 代码缩进
+au BufNewFile,BufRead *.py
+\ map = ^i#  |
+\ map - ^xx
 " save file
 nnoremap <silent> ,w :wa<cr>
+" cursor stay between pair symbols
+imap () ()<Left>
+imap [] []<Left>
+imap {} {}<Left>
+imap "" ""<Left>
+imap " "<Left>
 " 退格键将字段缩进的删掉
 set backspace=indent,eol,start
 "set vb         " 关闭声音 "iunmap <BS>
@@ -377,9 +412,7 @@ set foldlevelstart=99
 :ab rvsp bel vsp
 " 向左垂直分屏 :abo vsp OR :lefta vsp
 :ab lvsp abo vsp 
-" 注释代码
-map = ^i//
-map - ^xx
+
 vmap <C-S-P> dO#endif<Esc>PO#if 0<Esc>
 :ab stha s/^/\/\//
 :ab sthd s/^\/\///
