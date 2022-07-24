@@ -38,6 +38,8 @@ alias verify='~/proj/build/depot/apts/script/verify.sh'
 alias pys='cd ~/proj/APTradingSystem/apts/tools/kleung_client/proto/'
 alias sql='cd ~/proj/APTradingSystem/dist/sqlscript/'
 
+alias dev='cd ~/proj/linux-dev-env/'
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
